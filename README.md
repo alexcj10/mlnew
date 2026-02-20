@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://raw.githubusercontent.com/alexcj10/vantix/main/assets/logo.svg" width="400" alt="Vantix">
+<img src="https://raw.githubusercontent.com/alexcj10/vantix/main/assets/logo.svg" width="500" alt="Vantix">
 
 **Professional ML project scaffolding CLI — one command, zero config.**
 
@@ -156,3 +156,4 @@ python -m vantix init my_project
 ## License
 
 [MIT](LICENSE)
+
