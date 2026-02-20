@@ -334,20 +334,11 @@ python -m venv .venv
 
 ## 3. Activate Virtual Environment
 
-**Windows (PowerShell)**
-```powershell
-.venv\\Scripts\\Activate.ps1
-```
-
-**Windows (Command Prompt)**
-```cmd
-.venv\\Scripts\\activate.bat
-```
-
-**Mac / Linux**
-```bash
-source .venv/bin/activate
-```
+| Platform | Command |
+|:--|:--|
+| Windows (PowerShell) | `.venv\\Scripts\\Activate.ps1` |
+| Windows (CMD) | `.venv\\Scripts\\activate.bat` |
+| Mac / Linux | `source .venv/bin/activate` |
 
 Once activated, you will see `(.venv)` at the start of your terminal line.
 
@@ -358,8 +349,6 @@ Once activated, you will see `(.venv)` at the start of your terminal line.
 ```bash
 pip install --upgrade pip setuptools wheel
 ```
-
-> Same command works on Windows, Mac, and Linux.
 
 ## 5. Create Project Folder Structure
 
@@ -396,49 +385,40 @@ mkdir src\\inference
 ```
 project_name/
 ├── data/
-│   ├── raw/                        Original, untouched data. Never modify this.
-│   └── processed/                  Cleaned and transformed data ready for training.
+│   ├── raw/                        Original, untouched data
+│   └── processed/                  Cleaned and transformed data
 ├── notebooks/
-│   └── eda.ipynb                   Exploration, visualization, quick experiments only.
+│   └── eda.ipynb                   Exploration and visualization only
 ├── src/
 │   ├── features/
-│   │   └── build_features.py       Feature engineering and transformation logic.
+│   │   └── build_features.py       Feature engineering logic
 │   ├── models/
-│   │   └── model.py                Model definition or architecture.
+│   │   └── model.py                Model definition or architecture
 │   ├── training/
-│   │   └── train.py                Main training entry point. Run this to train.
+│   │   └── train.py                Main training entry point
 │   └── inference/
-│       └── predict.py              Loads saved model and runs predictions.
+│       └── predict.py              Prediction and serving logic
 ├── configs/
-│   └── config.yaml                 All settings: paths, hyperparams, thresholds.
-├── logs/                           Training logs and error outputs.
+│   └── config.yaml                 Settings, paths, hyperparameters
+├── logs/                           Training logs and error outputs
 ├── tests/
-│   └── test_model.py               Unit and integration tests for src/ code.
-├── .env                            Secret keys. Never commit this.
-├── .gitignore                      Files Git should ignore.
-├── requirements.txt                All packages with exact versions.
-└── README.md                       Project documentation.
+│   └── test_model.py               Unit and integration tests
+├── .env                            Secret keys (never commit)
+├── .gitignore                      Files Git should ignore
+├── requirements.txt                All packages with exact versions
+└── README.md                       Project documentation
 ```
 
 ## 7. What Code Goes Where
 
-**`src/features/build_features.py`**
-Anything that transforms raw data before it reaches the model. Handle missing values, encode categoricals, normalize columns, create derived features.
-
-**`src/models/model.py`**
-The model definition only. Define a neural network class, load an XGBoost model, or set up a scikit-learn pipeline. No training logic lives here.
-
-**`src/training/train.py`**
-The main script you run to train. It loads data, calls feature engineering, trains the model, evaluates it, and saves it to disk.
-
-**`src/inference/predict.py`**
-Loads the saved trained model and runs predictions on new data. This is what gets called inside a FastAPI endpoint or a batch job.
-
-**`configs/config.yaml`**
-All settings that might change between runs. Nothing gets hardcoded in Python files. File paths, learning rate, epochs, model type — all go here.
-
-**`notebooks/`**
-Only for exploration. Once logic is finalized, move it into the appropriate `src/` file. Notebooks are never imported by other code.
+| File | Purpose |
+|:--|:--|
+| `src/features/build_features.py` | Transforms raw data. Handle missing values, encode categoricals, normalize columns, create derived features. |
+| `src/models/model.py` | Model definition only. No training logic lives here. |
+| `src/training/train.py` | Main script to train. Loads data, trains model, evaluates, and saves to disk. |
+| `src/inference/predict.py` | Loads saved model and runs predictions. Called inside a FastAPI endpoint or batch job. |
+| `configs/config.yaml` | All settings that might change between runs. Never hardcoded in Python. |
+| `notebooks/` | Exploration only. Move finalized logic into `src/`. Never imported by other code. |
 
 ## 8. Create Required Files
 
@@ -556,13 +536,15 @@ deactivate
 
 ## Key Rules
 
-- Never write production code inside `.venv`
-- Never commit `.venv` to GitHub
-- Always activate the virtual environment before starting work
-- All production code lives in `src/`
-- Notebooks are for exploration only, not production
-- Never hardcode settings in Python files — use `configs/config.yaml`
-- Never commit `.env` to GitHub
+| Rule |
+|:--|
+| Never write production code inside `.venv` |
+| Never commit `.venv` to GitHub |
+| Always activate the virtual environment before starting work |
+| All production code lives in `src/` |
+| Notebooks are for exploration only, not production |
+| Never hardcode settings in Python files — use `configs/config.yaml` |
+| Never commit `.env` to GitHub |
 
 > Virtual environment isolates dependencies, `requirements.txt` guarantees reproducibility, and a clean folder structure keeps ML projects maintainable and production-ready from day one.
 """
