@@ -4,7 +4,7 @@
 
 **Professional ML project scaffolding CLI — one command, zero config.**
 
-[![PyPI](https://img.shields.io/pypi/v/mlnew)](https://pypi.org/project/mlnew/)
+[![Latest Version](https://img.shields.io/pypi/v/mlnew?color=blue&label=latest)](https://pypi.org/project/mlnew/)
 
 </div>
 
