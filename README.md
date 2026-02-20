@@ -1,5 +1,7 @@
 # mlnew
 
+[![PyPI version](https://img.shields.io/pypi/v/mlnew.svg)](https://pypi.org/project/mlnew/)
+
 One command ML project scaffolding CLI. Works on Windows, Mac, and Linux.
 
 ## Install
