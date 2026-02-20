@@ -5,8 +5,6 @@
 **Professional ML project scaffolding CLI — one command, zero config.**
 
 [![PyPI](https://img.shields.io/pypi/v/mlnew)](https://pypi.org/project/mlnew/)
-[![Python](https://img.shields.io/pypi/pyversions/mlnew)](https://pypi.org/project/mlnew/)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 </div>
 
