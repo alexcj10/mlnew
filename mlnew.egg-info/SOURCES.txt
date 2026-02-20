@@ -1,8 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-mlnew.egg-info/PKG-INFO
-mlnew.egg-info/SOURCES.txt
-mlnew.egg-info/dependency_links.txt
-mlnew.egg-info/entry_points.txt
-mlnew.egg-info/top_level.txt
