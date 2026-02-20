@@ -106,11 +106,11 @@ project_name/
 
 | File | Purpose |
 |:--|:--|
-| `src/features/build_features.py` | Transforms raw data before it reaches the model. Handle missing values, encode categoricals, normalize columns, create derived features. |
-| `src/models/model.py` | Model definition only. Define a neural network class, load an XGBoost model, or set up a scikit-learn pipeline. No training logic lives here. |
-| `src/training/train.py` | Main script you run to train. Loads data, calls feature engineering, trains the model, evaluates it, and saves it to disk. |
-| `src/inference/predict.py` | Loads the saved trained model and runs predictions on new data. Called inside a FastAPI endpoint or a batch job. |
-| `configs/config.yaml` | All settings that might change between runs. File paths, learning rate, epochs, model type — never hardcoded in Python. |
+| `build_features.py` | Transforms raw data before it reaches the model. Handle missing values, encode categoricals, normalize columns, create derived features. |
+| `model.py` | Model definition only. Define a neural network class, load an XGBoost model, or set up a scikit-learn pipeline. No training logic lives here. |
+| `train.py` | Main script you run to train. Loads data, calls feature engineering, trains the model, evaluates it, and saves it to disk. |
+| `predict.py` | Loads the saved trained model and runs predictions on new data. Called inside a FastAPI endpoint or a batch job. |
+| `config.yaml` | All settings that might change between runs. File paths, learning rate, epochs, model type — never hardcoded in Python. |
 | `notebooks/` | Exploration only. Once logic is finalized, move it into the appropriate `src/` file. Never imported by other code. |
 
 ## 8. Create Required Files
@@ -241,3 +241,4 @@ deactivate
 | Never commit `.env` to GitHub |
 
 > Virtual environment isolates dependencies, `requirements.txt` guarantees reproducibility, and a clean folder structure keeps ML projects maintainable and production-ready from day one.
+
