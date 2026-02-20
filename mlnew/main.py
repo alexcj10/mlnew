@@ -7,16 +7,16 @@ from pathlib import Path
 
 # Default packages with their latest stable versions
 DEFAULT_PACKAGES = {
-    "numpy":         "1.26.4",
-    "pandas":        "2.2.2",
-    "scikit-learn":  "1.4.2",
-    "matplotlib":    "3.9.0",
-    "seaborn":       "0.13.2",
-    "jupyter":       "1.0.0",
-    "mlflow":        "2.13.0",
-    "fastapi":       "0.111.0",
-    "uvicorn":       "0.30.1",
-    "python-dotenv": "1.0.1",
+    "numpy":         None,
+    "pandas":        None,
+    "scikit-learn":  None,
+    "matplotlib":    None,
+    "seaborn":       None,
+    "jupyter":       None,
+    "mlflow":        None,
+    "fastapi":       None,
+    "uvicorn":       None,
+    "python-dotenv": None,
 }
 
 DIRECTORIES = [

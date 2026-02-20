@@ -55,16 +55,16 @@ mlnew init my_project --pkg numpy==1.24.0 --pkg torch --pkg transformers==4.40.0
 
 | Package | Default Version |
 |---|---|
-| numpy | 1.26.4 |
-| pandas | 2.2.2 |
-| scikit-learn | 1.4.2 |
-| matplotlib | 3.9.0 |
-| seaborn | 0.13.2 |
-| jupyter | 1.0.0 |
-| mlflow | 2.13.0 |
-| fastapi | 0.111.0 |
-| uvicorn | 0.30.1 |
-| python-dotenv | 1.0.1 |
+| numpy | latest |
+| pandas | latest |
+| scikit-learn | latest |
+| matplotlib | latest |
+| seaborn | latest |
+| jupyter | latest |
+| mlflow | latest |
+| fastapi | latest |
+| uvicorn | latest |
+| python-dotenv | latest |
 
 See all defaults anytime:
 
