@@ -1,5 +1,5 @@
 include README.md
 include LICENSE
-include mlnew/SETUP_GUIDE.md
-recursive-include mlnew *.py
+include vantix/SETUP_GUIDE.md
+recursive-include vantix *.py
 recursive-include assets *

@@ -1,5 +1,5 @@
 import pytest
-from mlnew.main import parse_packages, build_install_list
+from vantix.main import parse_packages, build_install_list
 
 def test_parse_packages_simple():
     args = ["--pkg", "numpy"]

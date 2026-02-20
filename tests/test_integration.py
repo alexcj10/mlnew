@@ -2,7 +2,7 @@ import os
 import shutil
 import pytest
 from pathlib import Path
-from mlnew.main import create_project
+from vantix.main import create_project
 
 from unittest.mock import patch, MagicMock
 

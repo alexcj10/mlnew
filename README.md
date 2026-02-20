@@ -1,29 +1,29 @@
 <div align="center">
-<img src="https://raw.githubusercontent.com/alexcj10/mlsetup/main/assets/logo.svg" width="400" alt="mlnew">
+<img src="assets/logo.svg" width="400" alt="Vantix">
 
 **Professional ML project scaffolding CLI — one command, zero config.**
 
-[![Version](https://img.shields.io/badge/version-1.2.7-blue)](https://pypi.org/project/mlnew/)
+[![Version](https://img.shields.io/badge/version-1.2.8-blue)](https://pypi.org/project/vantix/)
 
 </div>
 
 ## Quick Start
 
 ```bash
-pip install mlnew
+pip install vantix
 ```
 
 ```bash
-mlnew init my_project
+vantix init my_project
 ```
 
 That's it. Your entire ML workspace is ready.
 
-> Run `pip install -U mlnew` to always get the latest version.
+> Run `pip install -U vantix` to always get the latest version.
 
 ## What It Does
 
-A single `mlnew init` command will:
+A single `vantix init` command will:
 
 | Step | Action |
 |:--:|:--|
@@ -54,7 +54,7 @@ All packages install the **latest compatible version** automatically.
 | `python-dotenv` | Environment variable management |
 
 ```bash
-mlnew packages     # View all defaults anytime
+vantix packages     # View all defaults anytime
 ```
 
 > Note: These 10 core packages include their own transitive dependencies (~150+ total), all of which are auto-detected and pinned in `requirements.txt`.
@@ -65,16 +65,16 @@ Override any default or add new packages with `--pkg`:
 
 ```bash
 # Pin specific versions
-mlnew init my_project --pkg numpy==1.24.0 --pkg pandas==2.0.0
+vantix init my_project --pkg numpy==1.24.0 --pkg pandas==2.0.0
 
 # Install latest (no pin)
-mlnew init my_project --pkg numpy==latest
+vantix init my_project --pkg numpy==latest
 
 # Add packages not in defaults
-mlnew init my_project --pkg torch --pkg transformers
+vantix init my_project --pkg torch --pkg transformers
 
 # Mix and match
-mlnew init my_project --pkg numpy==1.24.0 --pkg torch --pkg transformers==4.40.0
+vantix init my_project --pkg numpy==1.24.0 --pkg torch --pkg transformers==4.40.0
 ```
 
 ## Project Structure
@@ -121,11 +121,11 @@ python src/training/train.py
 
 | Command | Description |
 |:--|:--|
-| `mlnew init <name>` | Create project with default packages |
-| `mlnew init <name> --pkg <spec>` | Override specific packages |
-| `mlnew packages` | List default packages and versions |
-| `mlnew --version` | Show version |
-| `mlnew --help` | Show help |
+| `vantix init <name>` | Create project with default packages |
+| `vantix init <name> --pkg <spec>` | Override specific packages |
+| `vantix packages` | List default packages and versions |
+| `vantix --version` | Show version |
+| `vantix --help` | Show help |
 
 ## Requirements
 
@@ -135,9 +135,9 @@ python src/training/train.py
 ## Troubleshooting
 
 <details>
-<summary><b>Command not found: <code>mlnew</code> (Windows)</b></summary>
+<summary><b>Command not found: <code>vantix</code> (Windows)</b></summary>
 
-If you see `mlnew: The term 'mlnew' is not recognized...`, your Python Scripts folder is not in PATH.
+If you see `vantix: The term 'vantix' is not recognized...`, your Python Scripts folder is not in PATH.
 
 **Fix PATH (Recommended):**
 1. Search Windows for *"Edit the system environment variables"*
@@ -148,7 +148,7 @@ If you see `mlnew: The term 'mlnew' is not recognized...`, your Python Scripts f
 
 **Or use Python module directly:**
 ```bash
-python -m mlnew init my_project
+python -m vantix init my_project
 ```
 
 </details>
