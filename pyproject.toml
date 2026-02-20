@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mlnew"
-version = "1.2.1"
+version = "1.2.2"
 description = "One command ML project scaffolding CLI — works on Windows, Mac, and Linux."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -24,9 +24,12 @@ dev = ["pytest"]
 [project.scripts]
 mlnew = "mlnew.main:main"
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["mlnew*"]
 
 [tool.setuptools.package-data]
-mlnew = ["../SETUP_GUIDE.md"]
+mlnew = ["SETUP_GUIDE.md"]

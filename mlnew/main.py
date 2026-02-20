@@ -2,6 +2,7 @@ import sys
 import subprocess
 import platform
 import venv
+import argparse
 from pathlib import Path
 
 
@@ -305,16 +306,11 @@ python src/training/train.py
 
 
 def generate_setup_guide() -> str:
-    # Try multiple common locations to find the guide
-    paths = [
-        Path(__file__).parent.parent / "SETUP_GUIDE.md",  # Local dev / project root
-        Path(__file__).parent / "SETUP_GUIDE.md",         # If packaged inside
-        Path(sys.prefix) / "mlnew" / "SETUP_GUIDE.md",   # Common site-packages location
-    ]
+    # Look for the guide inside the package
+    path = Path(__file__).parent / "SETUP_GUIDE.md"
     
-    for path in paths:
-        if path.exists():
-            return path.read_text(encoding="utf-8")
+    if path.exists():
+        return path.read_text(encoding="utf-8")
     
     # Fallback minimal guide if file is absolutely not found
     return """\
@@ -565,9 +561,38 @@ deactivate
 
 
 def main():
-    args = sys.argv[1:]
+    parser = argparse.ArgumentParser(
+        description=bold("  mlnew — ML Project Scaffolding CLI"),
+        formatter_class=argparse.RawTextHelpFormatter,
+        add_help=False
+    )
+    
+    subparsers = parser.add_subparsers(dest="command")
 
-    if not args or args[0] in ("-h", "--help"):
+    # init command
+    init_parser = subparsers.add_parser("init", help="Create project with default packages")
+    init_parser.add_argument("project_name", help="Name of the project folder")
+    init_parser.add_argument("--pkg", action="append", help="Override specific package versions (e.g., numpy==1.24.0 or numpy==latest)")
+
+    # packages command
+    subparsers.add_parser("packages", help="List default packages and versions")
+
+    # global options
+    parser.add_argument("-h", "--help", action="store_true", help="Show this help message and exit")
+    parser.add_argument("--version", action="store_true", help="Show version")
+
+    args = parser.parse_args()
+
+    if args.version:
+        try:
+            from importlib.metadata import version as pkg_version
+            ver = pkg_version("mlnew")
+        except Exception:
+            ver = "unknown"
+        print(f"  mlnew version {ver}")
+        return
+
+    if args.help or not args.command:
         print()
         print(bold("  mlnew — ML Project Scaffolding CLI"))
         print()
@@ -584,35 +609,31 @@ def main():
         print()
         return
 
-    if args[0] == "--version":
-        try:
-            from importlib.metadata import version as pkg_version
-            ver = pkg_version("mlnew")
-        except Exception:
-            ver = "unknown"
-        print(f"  mlnew version {ver}")
-        return
-
-    if args[0] == "packages":
+    if args.command == "packages":
         show_packages_list()
         return
 
-    if args[0] == "init":
-        if len(args) < 2:
-            error("Please provide a project name.  Usage: mlnew init <project_name>")
-        project_name = args[1]
+    if args.command == "init":
+        project_name = args.project_name
         if not project_name.replace("_", "").replace("-", "").isalnum():
             error("Project name can only contain letters, numbers, hyphens, and underscores.")
 
-        # Parse any --pkg overrides
-        overrides = parse_packages(args[2:])
+        # Use the restored parse_packages function
+        cmd_args = []
+        if args.pkg:
+            for p in args.pkg:
+                cmd_args.extend(["--pkg", p])
+        overrides = parse_packages(cmd_args)
 
         # Start with defaults, apply overrides on top
         final_packages = dict(DEFAULT_PACKAGES)
         for name, version in overrides.items():
             final_packages[name] = version  # override version or add new package
 
-        create_project(project_name, final_packages)
+        try:
+            create_project(project_name, final_packages)
+        except Exception as e:
+            error(f"Failed to create project: {e}")
         return
 
     error(f"Unknown command: '{args[0]}'. Run 'mlnew --help' for usage.")
